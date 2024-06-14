@@ -150,6 +150,9 @@ EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = getenv("EMAIL_USE_TLS")
 
+DOMAIN = getenv('DOMAIN')
+SITE_NAME = getenv('SITE_NAME')
+
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'password-reset/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
