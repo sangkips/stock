@@ -10,11 +10,6 @@ from drf_yasg import openapi
 from django.urls import re_path as url, include
 
 
-public_apis = [
-    # urls for the auth app
-    url(r'^api/v1/account/', include("apps.account.urls")),
-]
-
 schema_view = get_schema_view(
     openapi.Info(
         title=config("API_TITLE"),
@@ -35,10 +30,9 @@ urlpatterns = [
     # urls for the tokens app
     path('admin/', admin.site.urls),
     path('api/', include('djoser.urls')),
-    path('api/', include('djoser.urls.jwt')),
+    path('api/', include('apps.account.urls')),
 ]
 
-urlpatterns += public_apis
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
