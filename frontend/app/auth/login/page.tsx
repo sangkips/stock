@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Page() {
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -61,9 +63,9 @@ export default function Page() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Don’t have account?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <Link href="/auth/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               register
-            </a>
+            </Link>
           </p>
         </div>
       </div>
