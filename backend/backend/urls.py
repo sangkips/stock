@@ -3,11 +3,10 @@ from django.views.generic.base import RedirectView
 from django.contrib import admin
 from decouple import config
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from django.urls import re_path as url, include
 
 
 schema_view = get_schema_view(
