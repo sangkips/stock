@@ -1,46 +1,20 @@
 'use client';
-import { useState, ChangeEvent, FormEvent } from "react";
+
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useRegisterMutation } from "@/app/redux/features/authApiSlice";
-import { toast } from "react-toastify";
 import Spinner from "@/components/common/spinner";
+import { useRegister } from "@/hooks";
 
 export default function Page() {
-  const router = useRouter();
-  const [register, { isLoading }] = useRegisterMutation();
-
-  const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    re_password: '',
-  });
-
-  // destructure the values 
-  const { first_name, last_name, email, password, re_password } = formData;
-
-  // handle change on events
-
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  }
-  
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    register({ first_name, last_name, email, password, re_password })
-      .unwrap()
-      .then(() => {
-        toast.success('Account created successfully')
-        router.push('/auth/login')
-      })
-      .catch(() => {
-        toast.error('Something went wrong')
-      })
-  }
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    re_password,
+    isLoading,
+    onChange,
+    onSubmit
+  } = useRegister();
 
     return (
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
