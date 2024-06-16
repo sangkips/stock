@@ -1,21 +1,9 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { RegisterForm } from '@/components/forms';
-import Spinner from "@/components/common/Spinner";
-import { useRegister } from "@/hooks";
 
 export default function Page() {
-  const {
-    first_name,
-    last_name,
-    email,
-    password,
-    re_password,
-    isLoading,
-    onChange,
-    onSubmit
-  } = useRegister();
 
     return (
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
