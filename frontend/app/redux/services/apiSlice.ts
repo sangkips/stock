@@ -7,11 +7,12 @@ import type {
 import { setAuth, logout } from '../features/authSlice'
 import { Mutex } from 'async-mutex'
 
+
 // create a new mutex
 const mutex = new Mutex()
 const baseQuery = fetchBaseQuery({
-    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/api`,
-    credentials: 'include',
+  baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/api`,
+  credentials: 'include',
 })
 const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,

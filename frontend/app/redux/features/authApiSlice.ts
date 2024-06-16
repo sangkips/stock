@@ -7,10 +7,6 @@ interface User{
     email: string;
 }
 
-interface CreateUserResponse {
-    success: boolean;
-    user: User;
-}
 
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
@@ -28,18 +24,18 @@ const authApiSlice = apiSlice.injectEndpoints({
             }),
         }),
         register: builder.mutation({
-            query: ({ first_name, last_name, email, password, re_password }) => ({
-                url: '/users/',
-                method: 'POST',
-                body: {
-                    first_name,
-                    last_name,
-                    email,
-                    password,
-                    re_password,
-                },
-            }),
-        }),
+			query: ({
+				first_name,
+				last_name,
+				email,
+				password,
+				re_password,
+			}) => ({
+				url: '/users/',
+				method: 'POST',
+				body: { first_name, last_name, email, password, re_password },
+			}),
+		}),
         verify: builder.mutation({
             query: () => ({
                 url: '/jwt/verify/',
