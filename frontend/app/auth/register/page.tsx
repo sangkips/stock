@@ -1,7 +1,15 @@
 'use client';
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useRegisterMutation } from "@/app/redux/features/authApiSlice";
+import { toast } from "react-toastify";
+import Spinner from "@/components/common/spinner";
 
 export default function Page() {
+  const router = useRouter();
+  const [register, { isLoading }] = useRegisterMutation();
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -19,10 +27,23 @@ export default function Page() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
-    
+  
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    register({ first_name, last_name, email, password, re_password })
+      .unwrap()
+      .then(() => {
+        toast.success('Account created successfully')
+        router.push('/auth/login')
+      })
+      .catch(() => {
+        toast.error('Something went wrong')
+      })
+  }
 
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
          
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -31,7 +52,7 @@ export default function Page() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={onSubmit}>
             <div>
               <label htmlFor="first_name" className="block text-sm font-medium leading-6 text-gray-900">
                 First Name
@@ -45,7 +66,7 @@ export default function Page() {
                   onChange={onChange}
                   value={first_name}
                   required
-                  />
+                />
               </div>
             </div>
 
@@ -62,7 +83,7 @@ export default function Page() {
                   onChange={onChange}
                   value={last_name}
                   required
-                  />
+                />
               </div>
             </div>
             <div>
@@ -103,7 +124,7 @@ export default function Page() {
             <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="re_password" className="block text-sm font-medium leading-6 text-gray-900">
-                 Confirm Password
+                  Confirm Password
                 </label>
               </div>
               <div className="mt-2">
@@ -124,18 +145,19 @@ export default function Page() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign up
+                {isLoading ? <Spinner sm /> : 'Signup'}
               </button>
             </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Have account?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            Have an account?{' '}
+            <Link
+              href="/auth/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               login
-            </a>
+            </Link>
           </p>
         </div>
       </div>
     )
-}
+  }
