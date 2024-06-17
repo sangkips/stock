@@ -25,10 +25,11 @@ export default function Input({
 }: Props) {
     return (
         <div>
-            <label htmlFor="labelId" className="block text-sm font-medium leading-6 text-gray-900">
+            <div className='flex items-center justify-between'>
+                <label htmlFor="labelId" className="block text-sm font-medium leading-6 text-gray-900">
                 {children}
-            </label>
-            {link && (
+                </label>
+                {link && (
 					<div className='text-sm'>
 						<Link
 							className='font-semibold text-indigo-600 hover:text-indigo-500'
@@ -38,6 +39,8 @@ export default function Input({
 						</Link>
 					</div>
 				)}
+            </div>
+            
             <div className="mt-2">
                 <input
                     id={labelId}
