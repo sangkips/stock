@@ -3,5 +3,6 @@ export default function Page() {
     <main>
       <h1>This is Home</h1>
     </main>
-  );
+  )
 }
+
