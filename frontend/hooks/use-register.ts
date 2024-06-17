@@ -31,7 +31,7 @@ export default function useRegister() {
       register({ first_name, last_name, email, password, re_password })
         .unwrap()
         .then(() => {
-          toast.success('Account created successfully')
+          toast.success('Account created successfully, please activate your email address')
           router.push('/auth/login')
         })
         .catch(() => {
