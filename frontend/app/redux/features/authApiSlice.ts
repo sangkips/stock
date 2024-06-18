@@ -15,7 +15,7 @@ const authApiSlice = apiSlice.injectEndpoints({
         }),
         login: builder.mutation({
             query: ({ email, password }) => ({
-                url: '/jwt/create/',
+                url: '/account/jwt/create/',
                 method: 'POST',
                 body: {
                     email,
@@ -31,40 +31,40 @@ const authApiSlice = apiSlice.injectEndpoints({
 				password,
 				re_password,
 			}) => ({
-				url: '/users/',
+				url: '/account/users/',
 				method: 'POST',
 				body: { first_name, last_name, email, password, re_password },
 			}),
 		}),
         verify: builder.mutation({
             query: () => ({
-                url: '/jwt/verify/',
+                url: '/account/jwt/verify/',
                 method: 'POST',
             }),
         }),
         logout: builder.mutation({
             query: () => ({
-                url: '/logout/',
+                url: '/account/logout/',
                 method: 'POST',
             }),
         }),
         activation: builder.mutation({
             query: ({ uid, token }) => ({
-                url: '/users/activation/',
+                url: '/account/users/activation/',
                 method: 'POST',
                 body: {uid, token},
             }),
         }),
         resetPassword: builder.mutation({
             query: (email) => ({
-                url: '/users/reset_password/',
+                url: '/account/users/reset_password/',
                 method: 'POST',
                 body: {email},
             }),
         }),
         resetPasswordConfirm: builder.mutation({
             query: ({ uid, token, new_password, re_new_password}) => ({
-                url: '/users/reset_password_confirm/',
+                url: '/account/users/reset_password_confirm/',
                 method: 'POST',
                 body: {uid, token, new_password, re_new_password},
             }),

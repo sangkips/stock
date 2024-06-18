@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import NavLinks from '@/app/dashboard/ui/nav-links';
 import { PowerIcon } from '@heroicons/react/24/outline';
-// import { signOut } from '@/auth';
+// import { signOut } from '@clerk/nextjs';
 
 export default function SideNav() {
   return (

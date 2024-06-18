@@ -2,22 +2,9 @@ from django.db import models
 from django.utils import timezone
 
 
-class Address(models.Model):
-    address_line_1 = models.CharField(max_length=100, null=True, blank=True)
-    address_line_2 = models.CharField(max_length=100, null=True, blank=True)
-    city = models.CharField(max_length=100, null=True, blank=True)
-    state = models.CharField(max_length=100, null=True, blank=True)
-    country_of_residence = models.CharField(max_length=100, null=True, blank=True)
-    zip_code = models.CharField(max_length=100, null=True, blank=True)
-    
-    class Meta:
-        verbose_name_plural = 'Addresses'
-    
-    def __str__(self):
-        return self.country_of_residence
 class Supplier(models.Model):
     name = models.CharField(max_length=50)
-    address = models.OneToOneField(Address, on_delete=models.CASCADE)
+    address = models.TextField(null=True, blank=True)
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=100, null=True, blank=True)
     kra_pin = models.CharField(max_length=15, null=True, blank=True)
@@ -92,7 +79,7 @@ class Customer(models.Model):
     last_name = models.CharField(max_length=50, blank=True)
     middle_name = models.CharField(max_length=50, blank=True)
     phone = models.CharField(max_length=14, blank=True, null=True)
-    address = models.OneToOneField(Address, on_delete=models.CASCADE)
+    address = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
 
     class Meta:
