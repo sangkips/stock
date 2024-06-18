@@ -2,7 +2,6 @@ from os import getenv, path
 from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 import dotenv
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     
     'apps.account',
+    'apps.product',
     
 ]
 
