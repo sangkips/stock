@@ -69,6 +69,13 @@ const authApiSlice = apiSlice.injectEndpoints({
                 body: {uid, token, new_password, re_new_password},
             }),
         }),
+        createCustomer: builder.mutation({
+            query: ({ first_name, last_name, middle_name, phone, address}) => ({
+                url: '/product/customer/',
+                method: 'POST',
+                body: {first_name, last_name, middle_name, phone, address},
+            }),
+        }),
     }),
 });
 
@@ -81,4 +88,5 @@ export const {
     useActivationMutation,
     useResetPasswordMutation,
     useResetPasswordConfirmMutation,
+    useCreateCustomerMutation,
 } = authApiSlice;

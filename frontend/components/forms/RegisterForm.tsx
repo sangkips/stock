@@ -4,16 +4,15 @@ import { useRegister } from '@/hooks';
 import { Form } from '@/components/forms';
 
 export default function RegisterForm() {
-
-  const {
-  first_name,
-  last_name,
-  email,
-  password,
-  re_password,
-  isLoading,
-  onChange,
-  onSubmit,
+	const {  
+		first_name,
+		last_name,
+		email,
+		password,
+		re_password,
+		isLoading,
+		onChange,
+		onSubmit,
   } = useRegister();
 
   const config = [
