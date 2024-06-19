@@ -7,6 +7,13 @@ interface User{
     email: string;
 }
 
+interface Customer{
+    first_name: string;
+    last_name: string;
+    middle_name: string;
+    phone: string;
+    address: string;
+}
 
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
@@ -76,6 +83,9 @@ const authApiSlice = apiSlice.injectEndpoints({
                 body: {first_name, last_name, middle_name, phone, address},
             }),
         }),
+        retrieveCustomer: builder.query<Customer, void>({
+            query: () =>  '/product/customer/',
+        }),
     }),
 });
 
@@ -89,4 +99,5 @@ export const {
     useResetPasswordMutation,
     useResetPasswordConfirmMutation,
     useCreateCustomerMutation,
+    useRetrieveCustomerQuery,
 } = authApiSlice;
