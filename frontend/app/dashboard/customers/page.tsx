@@ -8,7 +8,7 @@ export default function Page() {
 	return (
 		<div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl">Add Customer</h2>
+        <h2 className="text-xl">Customers</h2>
         <p className='mt-10 text-center text-sm text-gray-500'>
           <Link
             href='/dashboard/customers/add'
@@ -18,9 +18,7 @@ export default function Page() {
           </Link>
         </p>
       </div>
-      <div className="overflow-x-auto">
-        Customers
-      </div>
+      
     </div>
   );
 }
