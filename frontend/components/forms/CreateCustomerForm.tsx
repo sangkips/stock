@@ -34,7 +34,7 @@ export default function CustomerForm() {
         },
         {
 			labelText: 'Middle name',
-			labelId: 'last_name',
+			labelId: 'middle_name',
 			type: 'text',
 			value: middle_name,
 			required: false,

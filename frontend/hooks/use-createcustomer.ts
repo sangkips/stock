@@ -32,7 +32,7 @@ export default function useCreateCustomer() {
         .unwrap()
         .then(() => {
           toast.success('customer created successfully')
-          router.push('/dashboard/')
+          router.push('/dashboard/customers')
         })
         .catch(() => {
           toast.error('Fail to create customer')

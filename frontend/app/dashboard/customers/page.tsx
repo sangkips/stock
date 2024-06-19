@@ -28,8 +28,8 @@ export default function CustomerList() {
       <td className="py-2 px-4 border-b">{customer.first_name}</td>
       <td className="py-2 px-4 border-b">{customer.last_name}</td>
       <td className="py-2 px-4 border-b">{customer.middle_name ?? ''}</td>
-      <td className="py-2 px-4 border-b">{customer.phone}</td>
-      <td className="py-2 px-4 border-b">{customer.address}</td>
+      <td className="py-2 px-4 border-b">{customer.phone || ''}</td>
+      <td className="py-2 px-4 border-b">{customer.address || ' '}</td>
       <td className="py-2 px-4 border-b">
         <Link
           href={`/dashboard/customers/${customer.id}`}
