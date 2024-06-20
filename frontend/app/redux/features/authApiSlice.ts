@@ -15,6 +15,11 @@ interface Customer{
     address: string;
 }
 
+interface Category{
+    name: string;
+    description: string;
+}
+
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         retrieveUser: builder.query<User, void>({
@@ -83,8 +88,18 @@ const authApiSlice = apiSlice.injectEndpoints({
                 body: {first_name, last_name, middle_name, phone, address},
             }),
         }),
+        createCategory: builder.mutation({
+            query: ({ name, description}) => ({
+                url: '/product/category/',
+                method: 'POST',
+                body: {name, description},
+            }),
+        }),
         retrieveCustomer: builder.query<Customer, void>({
             query: () =>  '/product/customer/',
+        }),
+        retrieveCategory: builder.query<Category, void>({
+            query: () =>  '/product/category/',
         }),
     }),
 });
@@ -100,4 +115,6 @@ export const {
     useResetPasswordConfirmMutation,
     useCreateCustomerMutation,
     useRetrieveCustomerQuery,
+    useRetrieveCategoryQuery,
+    useCreateCategoryMutation
 } = authApiSlice;
