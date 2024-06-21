@@ -34,6 +34,15 @@ urlpatterns = [
         name='supplier-detail'
     ),
     
-    
+    path(
+        'expense/',
+        views.ExpenseListCreateAPIView.as_view(),
+        name='expense-list'
+    ),
+    path(
+        'expense/<int:pk>/',
+        views.ExpenseRetrieveUpdateDestroyAPIView.as_view(),
+        name='expense-detail'
+    ),
     
 ]
