@@ -3,6 +3,7 @@ from rest_framework import serializers
 from apps.product.models import (
     Category,
     Customer,
+    Expense,
     Supplier,
 )
 
@@ -20,4 +21,9 @@ class CategorySerializer(serializers.ModelSerializer):
 class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Supplier 
+        fields = '__all__'
+        
+class ExpenseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Expense 
         fields = '__all__'
