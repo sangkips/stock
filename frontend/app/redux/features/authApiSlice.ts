@@ -20,13 +20,13 @@ interface Category{
     description: string;
 }
 
-// interface Supplier {
-//     name: string;
-//     address: string;
-//     phone: string;
-//     email: string;
-//     kra_pin: string;
-// }
+interface Supplier {
+    name: string;
+    address: string;
+    phone: string;
+    email: string;
+    kra_pin: string; 
+}
 
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
@@ -105,13 +105,15 @@ const authApiSlice = apiSlice.injectEndpoints({
         }),
 
         createSupplier: builder.mutation({
-            query: ({ name, address, phone, email, kra_pin}) => ({
+            query: ({ name, address, phone, email, kra_pin, status}) => ({
                 url: '/product/supplier/',
                 method: 'POST',
-                body: {name, address, phone, email, kra_pin},
+                body: {name, address, phone, email, kra_pin,status},
             }),
         }),
-        
+        retrieveSupplier: builder.query<Supplier, void>({
+            query: () =>  '/product/supplier/',
+        }),
         retrieveCustomer: builder.query<Customer, void>({
             query: () =>  '/product/customer/',
         }),
@@ -135,4 +137,5 @@ export const {
     useRetrieveCategoryQuery,
     useCreateCategoryMutation,
     useCreateSupplierMutation,
+    useRetrieveSupplierQuery,
 } = authApiSlice;
