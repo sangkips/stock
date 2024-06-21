@@ -28,6 +28,12 @@ interface Supplier {
     kra_pin: string; 
 }
 
+interface Expense {
+    expense_type: string;
+    description: string;
+    amount: Float32Array;
+}
+
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         retrieveUser: builder.query<User, void>({
@@ -105,14 +111,24 @@ const authApiSlice = apiSlice.injectEndpoints({
         }),
 
         createSupplier: builder.mutation({
-            query: ({ name, address, phone, email, kra_pin, status}) => ({
+            query: ({ name, address, phone, email, kra_pin}) => ({
                 url: '/product/supplier/',
                 method: 'POST',
-                body: {name, address, phone, email, kra_pin,status},
+                body: {name, address, phone, email, kra_pin},
+            }),
+        }),
+        createExpense: builder.mutation({
+            query: ({ expense_type, description, amount}) => ({
+                url: '/product/expense/',
+                method: 'POST',
+                body: {expense_type, description, amount},
             }),
         }),
         retrieveSupplier: builder.query<Supplier, void>({
             query: () =>  '/product/supplier/',
+        }),
+        retrieveExpense: builder.query<Expense, void>({
+            query: () =>  '/product/expense/',
         }),
         retrieveCustomer: builder.query<Customer, void>({
             query: () =>  '/product/customer/',
@@ -138,4 +154,6 @@ export const {
     useCreateCategoryMutation,
     useCreateSupplierMutation,
     useRetrieveSupplierQuery,
+    useCreateExpenseMutation,
+    useRetrieveExpenseQuery,
 } = authApiSlice;
