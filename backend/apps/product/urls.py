@@ -45,4 +45,25 @@ urlpatterns = [
         name='expense-detail'
     ),
     
+    path(
+        'purchase/',
+        views.PurchaseListCreateAPIView.as_view(),
+        name='purchase-list'
+    ),
+    path(
+        'purchase/<int:pk>/',
+        views.PurchaseRetrieveUpdateDestroyAPIView.as_view(),
+        name='purchase-detail'
+    ),
+    
+    path(
+        'products/',
+        views.ProductListCreateAPIView.as_view(),
+        name='product-list'
+    ),
+    path(
+        'products/<int:pk>/',
+        views.ProductRetrieveUpdateDestroyAPIView.as_view(),
+        name='product-detail'
+    ),
 ]

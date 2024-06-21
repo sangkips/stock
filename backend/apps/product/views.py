@@ -3,12 +3,16 @@ from apps.product.models import (
     Category,
     Customer,
     Expense,
+    Product,
+    Purchase,
     Supplier,
 )
 from apps.product.serializers import (
     CategorySerializer,
     CustomerSerializer,
     ExpenseSerializer,
+    ProductSerializer,
+    PurchaseSerializer,
     SupplierSerializer
 )
 
@@ -68,3 +72,32 @@ class ExpenseRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView)
     
     def get_serializer(self, *args, **kwargs):
         return ExpenseSerializer(*args, **kwargs)
+    
+class PurchaseListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Purchase.objects.all()
+    serializer_class = PurchaseSerializer
+    
+    def get_serializer(self, *args, **kwargs):
+        return PurchaseSerializer(*args, **kwargs)
+
+class PurchaseRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Purchase.objects.all()
+    serializer_class = PurchaseSerializer
+    
+    def get_serializer(self, *args, **kwargs):
+        return PurchaseSerializer(*args, **kwargs)
+    
+ 
+class ProductListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    
+    def get_serializer(self, *args, **kwargs):
+        return ProductSerializer(*args, **kwargs)
+
+class ProductRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    
+    def get_serializer(self, *args, **kwargs):
+        return ProductSerializer(*args, **kwargs)

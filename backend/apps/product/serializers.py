@@ -4,6 +4,8 @@ from apps.product.models import (
     Category,
     Customer,
     Expense,
+    Product,
+    Purchase,
     Supplier,
 )
 
@@ -26,4 +28,14 @@ class SupplierSerializer(serializers.ModelSerializer):
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense 
+        fields = '__all__'
+        
+class PurchaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Purchase
+        fields = '__all__'
+        
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
         fields = '__all__'
