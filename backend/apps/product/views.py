@@ -1,9 +1,10 @@
 from rest_framework import generics
 from rest_framework.response import Response
-from apps.product.models import Category, Customer
+from apps.product.models import Category, Customer, Supplier
 from apps.product.serializers import (
     CategorySerializer,
-    CustomerSerializer
+    CustomerSerializer,
+    SupplierSerializer
 )
 
 class CustomerListCreateAPIView(generics.ListCreateAPIView):
@@ -34,3 +35,17 @@ class CategoryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
     
     def get_serializer(self, *args, **kwargs):
         return CategorySerializer(*args, **kwargs)
+    
+class SupplierListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Supplier.objects.all()
+    serializer_class = SupplierSerializer
+    
+    def get_serializer(self, *args, **kwargs):
+        return SupplierSerializer(*args, **kwargs)
+
+class SupplierRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Supplier.objects.all()
+    serializer_class = SupplierSerializer
+    
+    def get_serializer(self, *args, **kwargs):
+        return SupplierSerializer(*args, **kwargs)
