@@ -12,7 +12,7 @@ urlpatterns = [
         views.CustomerRetrieveUpdateDestroyAPIView.as_view(),
         name='customer-detail'
     ),
-     path(
+    path(
         'category/',
         views.CategoryListCreateAPIView.as_view(),
         name='category-list'
@@ -22,4 +22,18 @@ urlpatterns = [
         views.CategoryRetrieveUpdateDestroyAPIView.as_view(),
         name='category-detail'
     ),
+    
+    path(
+        'supplier/',
+        views.SupplierListCreateAPIView.as_view(),
+        name='supplier-list'
+    ),
+    path(
+        'supplier/<int:pk>/',
+        views.SupplierRetrieveUpdateDestroyAPIView.as_view(),
+        name='supplier-detail'
+    ),
+    
+    
+    
 ]
