@@ -34,6 +34,20 @@ interface Expense {
     amount: Float32Array;
 }
 
+interface Product {
+    name: string;
+    description: string;
+    quantity: string;
+    category: Category;
+}
+
+interface Purchase{
+    quantity: number;
+    price: number;
+    product: Product;
+    supplier: Supplier;
+}
+
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         retrieveUser: builder.query<User, void>({
@@ -124,8 +138,28 @@ const authApiSlice = apiSlice.injectEndpoints({
                 body: {expense_type, description, amount},
             }),
         }),
+        createProduct: builder.mutation({
+            query: ({ name, description, quantity, category}) => ({
+                url: '/product/products/',
+                method: 'POST',
+                body: {name, description, quantity, category},
+            }),
+        }),
+        createPurchase: builder.mutation({
+            query: ({ quantity, price, product, supplier}) => ({
+                url: '/product/purchase/',
+                method: 'POST',
+                body: {quantity, price, product, supplier},
+            }),
+        }),
         retrieveSupplier: builder.query<Supplier, void>({
             query: () =>  '/product/supplier/',
+        }),
+        retrieveProduct: builder.query<Product, void>({
+            query: () =>  '/product/products/',
+        }),
+        retrievePurchase: builder.query<Purchase, void>({
+            query: () =>  '/product/purchase/',
         }),
         retrieveExpense: builder.query<Expense, void>({
             query: () =>  '/product/expense/',
@@ -134,6 +168,9 @@ const authApiSlice = apiSlice.injectEndpoints({
             query: () =>  '/product/customer/',
         }),
         retrieveCategory: builder.query<Category, void>({
+            query: () =>  '/product/category/',
+        }),
+        getCategories: builder.query<Category, void>({
             query: () =>  '/product/category/',
         }),
     }),
@@ -156,4 +193,9 @@ export const {
     useRetrieveSupplierQuery,
     useCreateExpenseMutation,
     useRetrieveExpenseQuery,
+    useRetrieveProductQuery,
+    useRetrievePurchaseQuery,
+    useCreateProductMutation,
+    useCreatePurchaseMutation,
+    useGetCategoriesQuery
 } = authApiSlice;
