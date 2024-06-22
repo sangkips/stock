@@ -1,6 +1,6 @@
 'use client';
 
-import { useLogin, useRegister } from '@/hooks';
+import { useLogin } from '@/hooks';
 import { Form } from '@/components/forms';
 
 export default function LoginForm() {
