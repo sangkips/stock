@@ -1,6 +1,5 @@
 'use client';
 
-import { useLogin, useRegister } from '@/hooks';
 import { Form } from '@/components/forms';
 import useCreateCustomer from '@/hooks/use-createcustomer';
 
