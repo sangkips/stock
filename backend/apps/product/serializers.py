@@ -18,7 +18,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category 
-        fields = ['id', 'name']
+        fields = '__all__'
         
 class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +34,7 @@ class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
     class Meta:
         model = Product
-        fields = ['id', 'name', 'category', 'quantity', 'description']
+        fields = '__all__'
         
 class PurchaseSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)
