@@ -48,6 +48,13 @@ interface Purchase{
     supplier: string;
 }
 
+interface Sale{
+    quantity: number;
+    price: number;
+    product: string;
+    customer: string;
+}
+
 const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         retrieveUser: builder.query<User, void>({
@@ -152,6 +159,13 @@ const authApiSlice = apiSlice.injectEndpoints({
                 body: {quantity, price, product, supplier},
             }),
         }),
+        createSale: builder.mutation({
+            query: ({ quantity, price, product, customer}) => ({
+                url: '/product/sale/',
+                method: 'POST',
+                body: {quantity, price, product, customer},
+            }),
+        }),
         retrieveSupplier: builder.query<Supplier, void>({
             query: () =>  '/product/supplier/',
         }),
@@ -170,8 +184,8 @@ const authApiSlice = apiSlice.injectEndpoints({
         retrieveCategory: builder.query<Category, void>({
             query: () =>  '/product/category/',
         }),
-        getCategories: builder.query<Category, void>({
-            query: () =>  '/product/category/',
+        retrieveSales: builder.query<Sale, void>({
+            query: () =>  '/product/sale/',
         }),
     }),
 });
@@ -197,5 +211,6 @@ export const {
     useRetrievePurchaseQuery,
     useCreateProductMutation,
     useCreatePurchaseMutation,
-    useGetCategoriesQuery
+    useRetrieveSalesQuery,
+    useCreateSaleMutation,
 } = authApiSlice;

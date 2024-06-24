@@ -20,6 +20,7 @@ import clsx from 'clsx';
     { name: 'Reports', href: '/dashboard/reports', icon: UserGroupIcon },
     { name: 'Category', href: '/dashboard/category', icon: UserGroupIcon },
     { name: 'Product', href: '/dashboard/product', icon: UserGroupIcon },
+    { name: 'Sale', href: '/dashboard/sales', icon: UserGroupIcon },
   ];
   
 export default function NavLinks() {
