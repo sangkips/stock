@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 export default function useCreateSupplier() {
     const router = useRouter();
     const [createSupplier, { isLoading }] =  useCreateSupplierMutation();
-    
     const [formData, setFormData] = useState({
         name: '',
         address: '',
@@ -14,7 +13,7 @@ export default function useCreateSupplier() {
         email: '',
         kra_pin: '',
     });
-   
+
     // destructure the values 
     const { name, address, phone, email, kra_pin } = formData;
   
@@ -27,7 +26,7 @@ export default function useCreateSupplier() {
 
     const supplierData = {
         ...formData,
-        status: true // default value for status
+        // status: true // default value for status
     };
     
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
