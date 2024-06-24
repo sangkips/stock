@@ -51,7 +51,7 @@ export default function PurchaseList() {
   return (
     <div className="container mx-auto p-4">
       <header className="flex justify-between items-center mb-4">
-        <h2 className="text-xl">purchases</h2>
+        <h2 className="text-xl">Purchase Orders</h2>
         <Link
           href="/dashboard/purchases/add"
           className="text-sm rounded-md bg-indigo-600 px-3.5 py-2.5 text-white font-semibold shadow-sm hover:bg-indigo-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600"

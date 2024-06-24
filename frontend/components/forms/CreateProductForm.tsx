@@ -2,7 +2,7 @@
 
 import { Form } from '@/components/forms';
 import useCreateProduct from '@/hooks/use-createproduct';
-import useFetchCategories from '@/hooks/use-fetchcategories';
+// import useFetchCategories from '@/hooks/use-fetchcategories';
 
 export default function ProductForm() {
     const {
@@ -15,7 +15,7 @@ export default function ProductForm() {
         onSubmit
 	} = useCreateProduct();
 	
-	const { categories, isLoading: categoriesLoading, isError } = useFetchCategories();
+	// const { categories, isLoading: categoriesLoading, isError } = useFetchCategories();
 
     const config = [
     
@@ -46,7 +46,7 @@ export default function ProductForm() {
 			type: 'text',
             value: category,
 			required: true,
-			options: categoriesLoading || isError ? [] : Array.isArray(categories) && categories?.map(cat => ({ value: cat.id, label: cat.name })),
+			// options: categoriesLoading || isError ? [] : Array.isArray(categories) && categories?.map(cat => ({ value: cat.id, label: cat.name })),
         },
 	];
   

@@ -30,7 +30,7 @@ export default function SupplierList() {
       <td className="border px-4 py-2">{supplier.phone}</td>
       <td className="border px-4 py-2">{supplier.address ?? ''}</td>
       <td className="border px-4 py-2">{supplier.kra_pin}</td>
-      <td className="border px-4 py-2">{supplier.email || ' '}</td>
+      <td className="border px-4 py-2">{supplier.email ?? ''}</td>
       <td className="border px-4 py-2">
         <Link
           href={`/dashboard/suppliers/${supplier.id}`}
