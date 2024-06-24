@@ -16,7 +16,7 @@ interface Purchase {
     id: number;
     name: string;
   };
-  total_amount: Float32Array
+  total_amount: number
   
 }
 export default function PurchaseList() {
@@ -31,11 +31,11 @@ export default function PurchaseList() {
 	}
 
     const renderCustomerRow = (purchase: Purchase) => (
-        <tr key={purchase.id} className="border-t">
-        <td className="border px-4 py-2">{purchase.quantity}</td>
-        <td className="border px-4 py-2">{purchase.price}</td>
+      <tr key={purchase.id} className="border-t">
         <td className="border px-4 py-2">{purchase.product.name}</td>
         <td className="border px-4 py-2">{purchase.supplier.name}</td>
+        <td className="border px-4 py-2">{purchase.quantity}</td>
+        <td className="border px-4 py-2">{purchase.price}</td>
         <td className="border px-4 py-2">{purchase.total_amount}</td>
         <td className="border px-4 py-2">
             <Link
@@ -63,11 +63,11 @@ export default function PurchaseList() {
         <table className="min-w-full border-collapse">
           <thead className="bg-gray-200">
             <tr>
+              <th className="border border-gray-300 px-4 py-2 text-left">Product</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Supplier</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Product Quantity</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Price</th>
-                          <th className="border border-gray-300 px-4 py-2 text-left">Product</th>
-                          <th className="border border-gray-300 px-4 py-2 text-left">Supplier</th>
-                          <th className="border border-gray-300 px-4 py-2 text-left">Total Amaount</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Total Amaount</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Edit</th>
             </tr>
           </thead>

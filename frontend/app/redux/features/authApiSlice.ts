@@ -31,21 +31,21 @@ interface Supplier {
 interface Expense {
     expense_type: string;
     description: string;
-    amount: Float32Array;
+    amount: number;
 }
 
 interface Product {
     name: string;
     description: string;
     quantity: string;
-    category: Category;
+    category: string;
 }
 
 interface Purchase{
     quantity: number;
     price: number;
-    product: Product;
-    supplier: Supplier;
+    product: string;
+    supplier: string;
 }
 
 const authApiSlice = apiSlice.injectEndpoints({

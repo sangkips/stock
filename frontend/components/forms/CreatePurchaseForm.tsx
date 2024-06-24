@@ -4,18 +4,21 @@ import { Form } from '@/components/forms';
 import useCreatePurchase from '@/hooks/use-createpurchase';
 
 export default function PurchaseForm() {
-    const {
-        quantity,
-        price,
-        product,
-        supplier,
-        isLoading,
-        onChange,
-        onSubmit
+
+  const {
+    quantity,
+    price,
+    product,
+    supplier,
+    suppliers,
+    products,
+    isLoading,
+    onChange,
+    onSubmit
     } = useCreatePurchase();
 
-    const config = [
-        {
+  const config = [
+    {
 			labelText: 'Product Quantity',
 			labelId: 'quantity',
 			type: 'number',
@@ -26,22 +29,24 @@ export default function PurchaseForm() {
 			labelText: 'Price',
 			labelId: 'price',
 			type: 'number',
-            value: price,
+      value: price,
 			required: true,
-        },
-        {
-			labelText: 'Product',
-			labelId: 'product',
-			type: 'text',
-			value: product,
-			required: true,
-        },
-        {
+    },
+    {
+      labelText: 'Product',
+      labelId: 'product',
+      type: 'select',
+      value: product,
+      required: true,
+      options: Array.isArray(products) ? products.map(prod => ({ value: prod.id.toString(), label: prod.name })) : [],
+    },
+    {
 			labelText: 'Supplier',
 			labelId: 'supplier',
-			type: 'text',
+			type: 'select',
 			value: supplier,
-			required: true,
+      required: true,
+      options: Array.isArray(suppliers) ? suppliers.map(supp => ({ value: supp.id.toString(), label: supp.name })) : [],
 		},
 	];
   
