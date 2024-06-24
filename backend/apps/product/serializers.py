@@ -31,15 +31,12 @@ class ExpenseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True)
     class Meta:
         model = Product
         fields = '__all__'
         
 class PurchaseSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
-    supplier = SupplierSerializer(read_only=True)
     class Meta:
         model = Purchase
-        fields = ['id', 'product', 'supplier', 'quantity', 'price', 'total_amount', 'purchase_date']
+        fields = '__all__'
         
