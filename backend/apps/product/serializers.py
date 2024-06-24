@@ -6,6 +6,7 @@ from apps.product.models import (
     Expense,
     Product,
     Purchase,
+    Sale,
     Supplier,
 )
 
@@ -40,3 +41,8 @@ class PurchaseSerializer(serializers.ModelSerializer):
         model = Purchase
         fields = '__all__'
         
+
+class SaleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sale
+        fields = '__all__'

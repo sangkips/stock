@@ -66,4 +66,15 @@ urlpatterns = [
         views.ProductRetrieveUpdateDestroyAPIView.as_view(),
         name='product-detail'
     ),
+    
+    path(
+        'sale/',
+        views.SaleListCreateAPIView.as_view(),
+        name='sale-list'
+    ),
+    path(
+        'sale/<int:pk>/',
+        views.SaleRetrieveUpdateDestroyAPIView.as_view(),
+        name='sale-detail'
+    ),
 ]
