@@ -5,10 +5,11 @@ import Link from 'next/link';
 interface Props{
     type: string;
     labelId: string;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     value: string;
     children: React.ReactNode;
     required?: boolean;
+    options?: { value: string, label: string }[];
     link?: {
 		linkText: string;
 		linkUrl: string;
@@ -21,6 +22,7 @@ export default function Input({
     onChange,
     children,
     required = false,
+    options = [],
     link,
 }: Props) {
     return (
@@ -42,15 +44,33 @@ export default function Input({
             </div>
             
             <div className="mt-2">
-                <input
-                    id={labelId}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    name={labelId}
-                    type={type}
-                    onChange={onChange}
-                    value={value}
-                    required={required}
-                />
+                {type === 'select' ? (
+                    <select
+                        id={labelId}
+                        name={labelId}
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        onChange={onChange}
+                        value={value}
+                        required={required}
+                    >
+                        <option value="">Select category</option>
+                        {options.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </select>
+                ) : (
+                    <input
+                        id={labelId}
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        name={labelId}
+                        type={type}
+                        onChange={onChange}
+                        value={value}
+                        required={required}
+                    />
+                )}
             </div>
         </div>
     )

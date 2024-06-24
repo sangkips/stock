@@ -60,8 +60,8 @@ export default function SupplierList() {
               <th className="border border-gray-300 px-4 py-2 text-left">Company Name</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Phone Number</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Address</th>
-              <th className="border border-gray-300 px-4 py-2 text-left">Email</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Kra Pin</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Email</th>
               <th className="border border-gray-300 px-4 py-2 text-left">Edit</th>
             </tr>
           </thead>

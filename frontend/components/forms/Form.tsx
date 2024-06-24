@@ -8,6 +8,10 @@ interface Config {
     type: string;
     value: string;
     required?: boolean;
+    options?: {
+        value: string,
+        label: string;
+    }[];
     link?: {
 		linkText: string;
 		linkUrl: string;
@@ -17,7 +21,7 @@ interface Props{
     config: Config[];
     isLoading: boolean;
 	btnText: string;
-    onChange: (e:ChangeEvent<HTMLInputElement>) => void;
+    onChange: (e:ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
@@ -37,6 +41,7 @@ export default function Form({
 					type={input.type}
 					onChange={onChange}
                     value={input.value}
+                    options={input.options}
                     link={input.link}
 					required={input.required}
 				>
