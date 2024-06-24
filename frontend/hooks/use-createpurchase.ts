@@ -1,11 +1,13 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { useCreatePurchaseMutation } from "@/app/redux/features/authApiSlice";
+import { useCreatePurchaseMutation, useRetrieveSupplierQuery, useRetrieveProductQuery } from "@/app/redux/features/authApiSlice";
 import { toast } from "react-toastify";
 
 export default function useCreatePurchase() {
     const router = useRouter();
-    const [createPurchase, { isLoading }] =  useCreatePurchaseMutation();
+  const [createPurchase, { isLoading }] = useCreatePurchaseMutation();
+  const { data: suppliers } = useRetrieveSupplierQuery();
+  const { data: products } = useRetrieveProductQuery();
   
     const [formData, setFormData] = useState({
         supplier: '',
@@ -19,7 +21,7 @@ export default function useCreatePurchase() {
   
     // handle change on events
   
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
     }
@@ -30,20 +32,22 @@ export default function useCreatePurchase() {
       createPurchase({ quantity, price, product, supplier })
         .unwrap()
         .then(() => {
-          toast.success('product created successfully')
+          toast.success('purchase created successfully')
           router.push('/dashboard/product')
         })
         .catch(() => {
-          toast.error('Fail to create product')
+          toast.error('Fail to create urchase order')
         })
     }
     return {
-        supplier,
-        product,
-        quantity,
-        price,
-        isLoading,
-        onChange,
-        onSubmit
+      supplier,
+      product,
+      quantity,
+      price,
+      products,
+      suppliers,
+      isLoading,
+      onChange,
+      onSubmit
     }
 }
