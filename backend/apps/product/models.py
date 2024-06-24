@@ -51,6 +51,9 @@ class Purchase(models.Model):
     class Meta:
         verbose_name_plural = 'Purchases'
     
+    def __str__(self):
+        return self.product.name
+    
     def save(self, *args, **kwargs):
         self.total_amount = self.quantity * self.price
         super(Purchase, self).save(*args, **kwargs)
