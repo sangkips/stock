@@ -4,6 +4,7 @@ from apps.product.models import (
     Category,
     Customer,
     Expense,
+    Inventory,
     Product,
     Purchase,
     Sale,
@@ -46,3 +47,19 @@ class SaleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sale
         fields = '__all__'
+        
+    def validate(self, data):
+        product = data['product']
+        quantity = data['quantity']
+        
+        # Check if there is enough stock available
+        inventory = Inventory.objects.filter(product=product).order_by('-id').first()
+        if inventory:
+            totalBal = inventory.total_balance_quantity - quantity
+            if totalBal < 0:
+                raise serializers.ValidationError("Insufficient stock for the product.")
+        else:
+            if quantity > 0:
+                raise serializers.ValidationError("Insufficient stock for the product.")
+        
+        return data
