@@ -8,7 +8,6 @@ class Supplier(models.Model):
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=100, null=True, blank=True)
     kra_pin = models.CharField(max_length=15, null=True, blank=True)
-    status = models.BooleanField()
     date_created = models.DateTimeField(default=timezone.now)
 
     class Meta:
