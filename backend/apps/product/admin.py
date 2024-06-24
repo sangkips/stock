@@ -14,8 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(models.Product, ProductAdmin)
 
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ['id', 'supplier', 'product', 'quantity', 'price', 
-    'supplier', 'purchase_date']
+    list_display = ['id', 'supplier', 'product', 'quantity', 'price', 'purchase_date']
     search_fields = ['product__title']
 admin.site.register(models.Purchase, PurchaseAdmin)
 
