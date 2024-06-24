@@ -19,6 +19,15 @@ export default function SalesForm() {
 
     const config = [
         {
+            labelText: 'Product',
+            labelId: 'product',
+            type: 'select',
+            value: product,
+            required: true,
+            options: Array.isArray(products) ? products.map(prod => ({ value: prod.id.toString(), label: prod.name })) : [],
+        },
+        
+        {
             labelText: 'Product Quantity',
             labelId: 'quantity',
             type: 'number',
@@ -32,14 +41,7 @@ export default function SalesForm() {
             value: price,
             required: true,
         },
-        {
-            labelText: 'Product',
-            labelId: 'product',
-            type: 'select',
-            value: product,
-            required: true,
-            options: Array.isArray(products) ? products.map(prod => ({ value: prod.id.toString(), label: prod.name })) : [],
-        },
+        
         {
 
             labelText: 'Customer',
