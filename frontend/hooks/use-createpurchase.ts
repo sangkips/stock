@@ -36,7 +36,7 @@ export default function useCreatePurchase() {
           router.push('/dashboard/product')
         })
         .catch(() => {
-          toast.error('Fail to create urchase order')
+          toast.error('Fail to create purchase order')
         })
     }
     return {

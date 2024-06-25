@@ -10,7 +10,7 @@ export default function useResetPassword() {
 
     // handle change on events
   
-    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const onChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       setEmail(event.target.value);
     };
     

@@ -20,7 +20,7 @@ export default function useCreateExpense() {
   
     // handle change on events
   
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
     }

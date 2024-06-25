@@ -18,14 +18,7 @@ export default function SalesForm() {
     } = useCreateSales();
 
     const config = [
-        {
-            labelText: 'Product',
-            labelId: 'product',
-            type: 'select',
-            value: product,
-            required: true,
-            options: Array.isArray(products) ? products.map(prod => ({ value: prod.id.toString(), label: prod.name })) : [],
-        },
+        
         
         {
             labelText: 'Product Quantity',
@@ -41,6 +34,14 @@ export default function SalesForm() {
             value: price,
             required: true,
         },
+        {
+            labelText: 'Product',
+            labelId: 'product',
+            type: 'select',
+            value: product,
+            required: true,
+            options: Array.isArray(products) ? products.map(prod => ({ value: prod.id, label: prod.name })) : [],
+        },
         
         {
 
@@ -49,7 +50,7 @@ export default function SalesForm() {
             type: 'select',
             value: customer,
             required: false,
-            options: Array.isArray(customers) ? customers.map(cust => ({ value: cust.id.toString(), label: cust.name })) : [],
+            options: Array.isArray(customers) ? customers.map(cust => ({ value: cust.id, label: cust.name })) : [],
         },
     ];
 
